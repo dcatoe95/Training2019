@@ -1,0 +1,52 @@
+Russell Catoe SQL Questions
+
+
+Question 10.
+a.	select name,city from sis.clients;
+b.	select prodName from sis.products;
+c.	select * from sis.clients where clientName like ‘_a%’;
+d.	select * from sis.clients where clientCity = ‘Pune’;
+e.	select * from sis.products where (sellPrice>2000 and sellPrice<=5000);
+f.	alter table sis.product_master_table add column NEW_PRICE numeric(10,2);
+g.	alter table sis.salesmen change product_rate new_product_rate int;
+h.	select prodName from sis.products group by prodDesc;
+i.	select orderNum,orderDate from sis.orders;
+j.	delete from sis.orders where delDate<01-08-08;
+k.	update orders set delDate = ’16-08-08’ where orderNum = ‘ON01008’;
+l.	update clients set bal_due = ‘1200’ where client_no = ‘CN01003’;
+m.	select * from sis.products where prodDesc like ‘%HDD1034%’ and prodDesc like ‘%DVDRW%’;
+n.	select clientName,clientCity,clientState from sis.clients where clientState != ‘Maharashtra’;
+o.	select orderNum from sis.orders where orderBilled = ‘false’ and orderDate >= ‘03-01-08’ and orderDate <= ‘03-31-08’;
+
+Question 11.
+a.	select studentName,address,courses from db.students where studentDept = 'CSE';
+b.	select count(*) as CSEFac from db.faculty where employeeDep ='CSE';
+c.	select courseName from db.departs where departName = 'CSE';
+d.	select studentName from db.students where semester = '4';
+e.	select studentName from db.students where CGPA>='8.5';
+f.	
+g.
+h.	select count(*) as Enrolled from db.students where studCourses like '%DBMS%';
+i.	select semester from db.students where studCourses like '%DBMS%';
+j.	select studentName from db.students and group by studentName;
+K.	update students set address ='Pune' where std_id='CSI08002';
+l.
+m.	select courseName from db.departs where departName ='CSE' and courseName like '%computer science%';
+n.	select studentName from db.students where address = 'Pune';
+o.	select count(departName) as NumDeparts from db.departs;
+
+Question 8.
+1.	select aname from db.aircraft where aid in (select aid from db.certified where eid in (select eid in db.employees where salary > 80000));
+2.
+3.	select ename from db.employees where eid in (select eid from db.certified) and salary<(min(price) from db.flights where to = 'Honolulu' and from = 'Los Angeles'));
+4.	select aname from db.aircraft where cruisingrange>'1000' and 
+5.	select ename from db.employees where eid in (select eid from db.certified where aid in (select aid from db.aircraft where aname like '%Boeing%'));
+6.
+7.	select from,to from db.flights where distance <= (select cruisingrange from db.aircraft where aid in (select aid from db.certified where eid in (select eid from db.employees where salary>100000)));
+8.	select ename from db.employees where eid in (select eid from db.certified where aid != (select aid from db.aircraft where aname like '%Boeing%'));
+9.	
+10.
+11.	select ename,salary from db.employees where eid != (select eid from db.certified) and salary > avg(select salary from db.employees where eid in db.certified);
+12.	select ename from db.employees where eid in (select eid from db.certified where aid in (select aid from db.aircraft where cruising range > '1000'));
+13.	select ename from db.employees where eid in (select eid from db.certified where aid in (count(select aid from db.aircraft where cruising range > '1000') >=2);
+14.	select ename from db.employees where eid in (select eid from db.certified where aid in (select aid from db.aircraft where cruising range > '1000' and aname like '%Boeing%'));
